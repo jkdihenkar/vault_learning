@@ -1,0 +1,30 @@
+{
+  "datacenter": "ha_dc_segment1",
+  "data_dir": "/data/consul5",
+  "log_level": "DEBUG",
+  "node_name": "consul_node_5",
+  "node_id": "1b5ede5b-7343-4458-97f7-e05c0918e5be",
+  "server": false,
+  "bootstrap": false,
+  "encrypt": "oLfrB/k2hECb6XDMzTZ2xA==",
+  "start_join": [ "127.0.0.1:8311" ],
+  "advertise_addr": "127.0.0.1",
+  "addresses": {
+    "https": "127.0.0.1"
+  },
+  "ports": {
+    "https": 9909,
+    "dns": -1,
+    "http": -1,
+    "server": 9959,
+    "serf_lan": 8319,
+    "serf_wan": 8329
+  },
+  "key_file": "l.key",
+  "cert_file": "l.pem",
+  "ca_file": "ca.pem",
+  "watches": [
+
+  ],
+  "ui": true
+}
