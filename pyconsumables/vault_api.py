@@ -58,10 +58,12 @@ class VaultAPI(object):
 
         dumpfile = VAULT_REKEYING_DUMP_FILE.format(date_time=datetime.datetime.now().strftime("%Y%m%d_%H%M%S"))
 
-        with open(dumpfile, 'w') as dumpfile_fd:
-            json.dumps(out)
+        keys_out = self.vault_cli.rekey_multi(VAULT_UNSEAL_KEYS, out['nonce'])
 
-        return out
+        with open(dumpfile, 'w+') as dumpfile_fd:
+            dumpfile_fd.write(json.dumps(keys_out))
+
+        return keys_out
 
     def rekey_get_status(self):
         return self.vault_cli.rekey_status

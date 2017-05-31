@@ -13,7 +13,7 @@ VAULT_TIMEOUT = 30
 VAULT_ALLOW_REDIRECTS = True
 
 # Root Token
-VAULT_TOKEN_ROOT = "cc5431f4-fa1e-6643-b66e-b0374d7ba170"
+VAULT_TOKEN_ROOT = "0891a60b-a132-b149-2ea2-2562316909b8"
 
 # Re-key params
 VAULT_KEY_PROPS = {
@@ -25,9 +25,11 @@ VAULT_KEY_PROPS = {
 
 # If you re-key vault you'll need to update this value
 VAULT_UNSEAL_KEYS = [
-    "Jh5JroURGXNPk1TPuPXGuVsccL76oar/wEB7OUTMyNth",
-    "UDg4/5+5F1IygNebq/EQLyCr8LitpTSn2+U6OqLMmi0J",
-    "P379cN17JY+uuGTub6nsUY0+Z2hP0TcPC+zXxq28YUpF"
+    "64N8/B4b7TQlXaJnWBlKkeDqwDBojeoohsm5wQGwvhAy",
+    "EcVseyVYlCHbFXBrml3ODQmwlRz4x8ImYuCkMXOiVK4z",
+    "+WeW5/MjUwKArQqlGivsqKUmcz2Tq1A8ahj6cHeMRjBZ",
+    "lqB0Mo63XLNaecthOTsI3xnHZyYgqP4v9FA6uTi5y0+/",
+    "12+E3uxLzXAn7AklC+r1qrm8SZkRI311H9yBnsBXet+w"
 ]
 
 # Vault dump path after rekeying
