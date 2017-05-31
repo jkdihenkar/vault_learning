@@ -9,7 +9,7 @@ from vault_api import VaultAPI
 vault = VaultAPI()
 
 # If true will check and cancel ongoing rekeying
-CANCEL = True
+CANCEL = False
 
 if vault.is_rekey_ongoing():
     print("Detected ongoing rekeying ... Trying to get status")
