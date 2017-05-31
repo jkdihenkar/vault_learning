@@ -1,9 +1,9 @@
 # Steps for running the Vault/Consul on Local
 
-s1: `sh run_consul.sh`
-s2: `sh run_consul_agent.sh`
-s3: `sh run_vault.sh`
-s4: unseal vault
+* s1: `sh run_consul.sh`
+* s2: `sh run_consul_agent.sh`
+* s3: `sh run_vault.sh`
+* s4: unseal vault
 
 `./vault unseal -address=https://localhost:9801`
 
@@ -26,8 +26,42 @@ your vault will remain permanently sealed.
 
 ```
 
-s5: cmdline interface with root token
+* s5: cmdline interface with root token
 
 `./vault auth -address=https://localhost:9801 cc5431f4-fa1e-6643-b66e-b0374d7ba170`
 
 `./vault list -address=https://localhost:9801 secret/password`
+
+* s6: Check vault ha status after unseal
+
+```
+# Primary vault
+[jd@jaypc hashicorp]$ ./vault status -address=https://localhost:9801
+Sealed: false
+Key Shares: 5
+Key Threshold: 2
+Unseal Progress: 0
+Unseal Nonce:
+Version: 0.7.2
+Cluster Name: vault-cluster-0ddf7bf1
+Cluster ID: 30dbbe17-5ee5-4a91-4df6-8a9bf141eb3b
+
+High-Availability Enabled: true
+	Mode: active
+	Leader: https://127.0.0.1:9801
+
+# Standby vault
+[jd@jaypc hashicorp]$ ./vault status -address=https://localhost:9802
+Sealed: false
+Key Shares: 5
+Key Threshold: 2
+Unseal Progress: 0
+Unseal Nonce:
+Version: 0.7.2
+Cluster Name: vault-cluster-0ddf7bf1
+Cluster ID: 30dbbe17-5ee5-4a91-4df6-8a9bf141eb3b
+
+High-Availability Enabled: true
+	Mode: standby
+	Leader: https://127.0.0.1:9801
+```

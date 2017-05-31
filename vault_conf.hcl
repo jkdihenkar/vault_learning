@@ -1,6 +1,6 @@
 listener "tcp" {
-  address= "127.0.0.1:9801"
-  cluster_address= "127.0.0.1:9851"
+  address= "localhost:9801"
+  cluster_address= "localhost:9851"
   tls_cert_file= "l.pem"
   tls_key_file= "l.key"
   tls_min_version= "tls12"

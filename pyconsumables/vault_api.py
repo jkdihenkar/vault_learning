@@ -44,9 +44,10 @@ class VaultAPI(object):
         )
 
     def read_secret(self, path: str) -> dict:
-        return self.vault_cli.read(
+        resp = self.vault_cli.read(
             path
-        )['data']
+        )
+        return resp['data'] if resp else resp
 
     def rekey_vault(self):
         """
@@ -110,3 +111,10 @@ class VaultAPI(object):
             'Vault logs to file',
             {'file_path': file}
         )
+
+    # Getting backup keys
+    def get_backedup_keys(self):
+        try:
+            return self.vault_cli.get_backed_up_keys()
+        except hvac.exceptions.InvalidRequest as e:
+            return None
