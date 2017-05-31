@@ -21,12 +21,18 @@ class VaultAPI(object):
         )
 
     def get_seal_status(self) -> bool:
-        return self.vault_cli.seal_status['sealed']
+        return self.vault_cli.is_sealed()
+
+    def attempt_unseal_old(self):
+        self.vault_cli.unseal(key=VAULT_UNSEAL_KEYS[0])
+        self.vault_cli.unseal(key=VAULT_UNSEAL_KEYS[1])
+        self.vault_cli.unseal(key=VAULT_UNSEAL_KEYS[2])
+
+    async def async_attempt_unseal(self):
+        return await self.vault_cli.unseal_multi(VAULT_UNSEAL_KEYS)
 
     def attempt_unseal(self):
-        self.vault_cli.unseal(key="Jh5JroURGXNPk1TPuPXGuVsccL76oar/wEB7OUTMyNth")
-        self.vault_cli.unseal(key="UDg4/5+5F1IygNebq/EQLyCr8LitpTSn2+U6OqLMmi0J")
-        self.vault_cli.unseal(key="P379cN17JY+uuGTub6nsUY0+Z2hP0TcPC+zXxq28YUpF")
+        return self.vault_cli.unseal_multi(VAULT_UNSEAL_KEYS)
 
     def write_secret(self, path: str, warp_ttl: int, kwargs: dict) -> dict:
         return self.vault_cli.write(
