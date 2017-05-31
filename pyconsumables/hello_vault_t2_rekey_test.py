@@ -1,8 +1,8 @@
 """
 ReKey Vault
 """
-# TODO: Make it work
-# this doesn't work as of now
+# TODO: Add docs in readme
+# After fixing the bugin hvac this works
 
 from vault_api import VaultAPI
 
