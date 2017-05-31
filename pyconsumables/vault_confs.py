@@ -19,6 +19,7 @@ VAULT_TOKEN_ROOT = "cc5431f4-fa1e-6643-b66e-b0374d7ba170"
 VAULT_KEY_PROPS = {
     'secret_shares': 5,
     'secret_threshold': 2,
+    'pgp_keys': None,
     'backup': True
 }
 
@@ -28,4 +29,20 @@ VAULT_UNSEAL_KEYS = [
     "UDg4/5+5F1IygNebq/EQLyCr8LitpTSn2+U6OqLMmi0J",
     "P379cN17JY+uuGTub6nsUY0+Z2hP0TcPC+zXxq28YUpF"
 ]
+
+# Vault dump path after rekeying
+VAULT_REKEYING_DUMP_FILE = '/home/jd/hashicorp/pyconsumables/rekey_{date_time}.json'
+
+# Approle Backend Details
+VAULT_APPROLE_BACKEND_ENABLED = True
+VAULT_APPROLE_BACKEND_CHECK = 'auth/approle/'
+VAULT_APPROLE_BACKEND = {
+    'backend_type': 'approle',
+    'description': 'Applications and Role Descriptions',
+    'mount_point': '/auth/approle'
+}
+
+# Audit Backend
+VAULT_AUDIT_LOG_FILE = '/home/jd/hashicorp/vault.m.log'
+
 

@@ -6,3 +6,4 @@ consul
 .idea*
 *pyc
 pyconsumables/__pycache__/*
+*.log
