@@ -1,7 +1,7 @@
 {
   "datacenter": "ha_dc_segment1",
   "data_dir": "/data/consul2",
-  "log_level": "DEBUG",
+  "log_level": "INFO",
   "node_name": "consul_node_2",
   "node_id": "d13d1c56-6027-4502-8242-9c3f0eb7ce40",
   "server": true,
@@ -14,7 +14,7 @@
   },
   "ports": {
     "https": 9902,
-    "dns": -1,
+    "dns": 9052,
     "http": -1,
     "server": 9952,
     "serf_lan": 8312,
