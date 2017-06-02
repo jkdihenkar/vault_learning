@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # consul        Manage the consul agent
 #       
@@ -27,6 +27,8 @@
 # If you replace consul vars file change the following
 . /home/jd/hashicorp/init_scripts/consul_vars.sh
 
+echo "Trying to run $prog service as user $user ..."
+
 lockfile="/var/lock/subsys/$prog"
 
 # pull in sysconfig settings
@@ -51,9 +53,12 @@ start() {
     ## daemon can't be backgrounded.  we need the pid of the spawned process,
     ## which is actually done via runuser thanks to --user.  you can't do "cmd
     ## &; action" but you can do "{cmd &}; action".
+
+    ## Logs redirect looks like a bad implementation
+    ## Issue on hashicorp https://github.com/hashicorp/consul/issues/445
     daemon \
         --pidfile=$pidfile \
-        --user=consul \
+        --user=$user \
         " { $exec agent -config-file=$conffile -config-dir=$confdir &>> $logfile & } ; echo \$! >| $pidfile "
     
     RETVAL=$?
@@ -76,6 +81,7 @@ stop() {
 
 restart() {
     stop
+    sleep 1
     start
 }
 
