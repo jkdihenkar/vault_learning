@@ -20,21 +20,14 @@
 # Description: Consul is a tool for service discovery and configuration
 ### END INIT INFO
 
-# version v0
-# Initial version from https://gist.github.com/blalor/c325d500818361e28daf
-# https://gist.githubusercontent.com/blalor/c325d500818361e28daf/raw/317e51764dc538a60595a8d604a835cca6e6356c/gistfile1.sh
+# version v1 - consul init
 
 # source function library
 . /etc/rc.d/init.d/functions
+# If you replace consul vars file change the following
+. /home/jd/hashicorp/init_scripts/consul_vars.sh
 
-prog="consul"
-user="consul"
-exec="/usr/local/bin/$prog"
-pidfile="/var/run/$prog.pid"
 lockfile="/var/lock/subsys/$prog"
-logfile="/var/log/$prog"
-conffile="/etc/consul.conf"
-confdir="/etc/consul.d"
 
 # pull in sysconfig settings
 [ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
