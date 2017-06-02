@@ -20,21 +20,17 @@
 # Description: Consul is a tool for service discovery and configuration
 ### END INIT INFO
 
-# version v0.1 == replaced consul with vault, same should work!
-# Initial version from https://gist.github.com/blalor/c325d500818361e28daf
-# https://gist.githubusercontent.com/blalor/c325d500818361e28daf/raw/317e51764dc538a60595a8d604a835cca6e6356c/gistfile1.sh
+# version v1 == vault init script
 
 # source function library
 . /etc/rc.d/init.d/functions
 
-prog="vault"
-user="vault"
-exec="/usr/local/bin/$prog"
-pidfile="/var/run/$prog.pid"
+# If you replace consul vars file change the following
+. /home/jd/hashicorp/init_scripts/vault_vars.sh
+
+echo "Trying to run $prog service as user $user ..."
+
 lockfile="/var/lock/subsys/$prog"
-logfile="/var/log/$prog"
-conffile="/etc/vault.conf"
-confdir="/etc/vault.d"
 
 # pull in sysconfig settings
 [ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
@@ -60,8 +56,8 @@ start() {
     ## &; action" but you can do "{cmd &}; action".
     daemon \
         --pidfile=$pidfile \
-        --user=vault \
-        " { $exec agent -config-file=$conffile -config-dir=$confdir &>> $logfile & } ; echo \$! >| $pidfile "
+        --user=$user \
+        " { $exec server --config=$conffile -log-level $loglevel &>> $logfile & } ; echo \$! >| $pidfile "
     
     RETVAL=$?
     echo
@@ -83,6 +79,7 @@ stop() {
 
 restart() {
     stop
+    sleep 1
     start
 }
 
