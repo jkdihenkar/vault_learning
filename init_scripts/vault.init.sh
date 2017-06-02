@@ -41,7 +41,6 @@ start() {
     [ -x $exec ] || exit 5
     
     [ -f $conffile ] || exit 6
-    [ -d $confdir ] || exit 6
 
     umask 077
 
