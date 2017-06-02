@@ -8,7 +8,7 @@ Ref: https://www.consul.io/docs/agent/basics.html
 
 Explaining the params in the config file of consul.
 
-```json
+```
 {
 // Name of data center
   "datacenter": "ha_dc_segment1",
@@ -48,7 +48,7 @@ Explaining the params in the config file of consul.
 
 And a sample agent config file:
 
-```json
+```
 {
   "datacenter": "ha_dc_segment1",
   "data_dir": "/data/consul5",
