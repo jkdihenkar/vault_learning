@@ -21,7 +21,7 @@ else:
     print("Not detected auth backend at {}".format(path))
 
 ## Enabling audit backend to file
-print(vault._enable_audit_file_backend())
+# print(vault._enable_audit_file_backend())
 
 # Getting details about backends
 print("Audit: ", vault.vault_cli.list_audit_backends())
