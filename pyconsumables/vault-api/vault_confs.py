@@ -2,6 +2,7 @@
 String vault confs
 """
 
+
 # Note: VAULT_VERIFY -- It should be a boolean in case we say it should be true of false saying we verify or not
 #  and a string to CA bundle of we need to give a specific CA.
 #  sessions.py => line #479
@@ -53,3 +54,22 @@ class VaultConfig(object):
         # Audit Backend
         self.vault_audit_log_file = '/home/jd/hashicorp/vault.m.log'
 
+
+class DevVaultConfig(VaultConfig):
+
+    def __init__(self):
+        super(DevVaultConfig, self).__init__()
+        self.vault_url = "https://data2.dev.evivehealth.com:9801"
+        self.vault_verify = 'ca.pem'
+        self.vault_token_root = '790a1a26-7691-dd1e-d720-a7d2e8657e4c'
+        self.vault_rekeying_dump_file = '/tmp/hashicorp_{date_time}.json'
+
+        self.vault_unseal_keys = [
+            '0m6qeJorLUNmJ0IyzNvreAL6a0CVzYZwMpovh65 + wXqI',
+            '7aNDxt82 + aVNZaDkkJCxc6m37Ef3r2ySXM6YUgEsiXey',
+            'HhB5D2ID74Rgv + OXoamU5zFlbx3l5roehNdbBhNie922',
+            'fJ + QXOje9hak7Kn6pBARr7Vh0SFvNXwiv2jM95usTxk6',
+            'l1Zczf9UhQH2s8FJOLWz5X1kaThLS4BUIRWgg9r1MlT3'
+        ]
+
+        self.vault_audit_log_file = '/opt/evive/apps/vault/logs/vault-audit.log'

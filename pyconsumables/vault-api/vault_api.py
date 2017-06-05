@@ -14,7 +14,7 @@ class VaultAPI(object):
     A little higher level vault API
     """
     def __init__(self):
-        self.vault_conf = VaultConfig()
+        self.vault_conf = DevVaultConfig()
         self.vault_cli = hvac.Client(
             url=self.vault_conf.vault_url,
             token=self.vault_conf.vault_token_root,
