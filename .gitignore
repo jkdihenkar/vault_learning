@@ -9,3 +9,6 @@ pyconsumables/__pycache__/*
 *.log
 pyconsumables/dist/*
 pyconsumables/vault_api.egg-info/*
+precommit.sh
+postcommit.sh
+blacklist_files

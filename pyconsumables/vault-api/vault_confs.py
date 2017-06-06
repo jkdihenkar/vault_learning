@@ -62,7 +62,7 @@ class DevVaultConfig(VaultConfig):
 
     def __init__(self):
         super(DevVaultConfig, self).__init__()
-        self.vault_url = "https://data2.dev.evivehealth.com:9801"
+        self.vault_url = "https://kingkong.jdpc.com:9801"
         self.vault_verify = 'ca.pem'
         self.vault_token_root = '790a1a26-7691-dd1e-d720-a7d2e8657e4c'
         self.vault_rekeying_dump_file = '/tmp/hashicorp_{date_time}.json'
