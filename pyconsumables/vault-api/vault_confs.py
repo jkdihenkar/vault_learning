@@ -54,6 +54,9 @@ class VaultConfig(object):
         # Audit Backend
         self.vault_audit_log_file = '/home/jd/hashicorp/vault.m.log'
 
+        # Secret backend path
+        self.vault_secretpath = '/secret/'
+
 
 class DevVaultConfig(VaultConfig):
 

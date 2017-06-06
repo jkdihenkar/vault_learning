@@ -7,7 +7,7 @@ from vault_confs import *
 import hvac
 import datetime
 import json
-
+import os
 
 class VaultAPI(object):
     """
@@ -44,9 +44,9 @@ class VaultAPI(object):
             **kwargs
         )
 
-    def read_secret(self, path: str) -> dict:
+    def read_secret(self, key_path: str) -> dict:
         resp = self.vault_cli.read(
-            path
+            os.path.join(self.vault_conf.vault_secretpath, key_path)
         )
         return resp['data'] if resp else resp
 

@@ -4,7 +4,7 @@ Read creds from vault
 from vault_api import VaultAPI
 import time
 
-secret_path = '/secret/password'
+secret_keypath = 'test_password'
 
 vault = VaultAPI()
 
@@ -16,7 +16,7 @@ if vault.get_seal_status():
 
 
 # Simple reading the secret
-print("Reading password: ", vault.read_secret(secret_path))
+print("Reading password: ", vault.read_secret(secret_keypath))
 
 # Exploring the key status
 print("Key status: ", vault.vault_cli.key_status)
